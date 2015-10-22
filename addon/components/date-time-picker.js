@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 const { observer } = Ember;
 
@@ -7,17 +8,21 @@ const DateTimePickerComponent = Ember.Component.extend({
 
   datetimeChanged: observer('datetime', function() {
     let changeHandler = this.get('changeHandler');
+    let datetime = this.get('datetime');
+    let format = 'YYYY/MM/DD H:mm';
+    let value = moment(datetime).format(format);
 
     this.$()
       .off('change', changeHandler)
-      .val(this.get('datetime'))
+      .val(value)
       .on('change', changeHandler);
   }),
 
   didInsertElement() {
     let changeHandler = event => {
       Ember.run(() => {
-        this.sendAction('action', Ember.$(event.target).val());
+        let value = Ember.$(event.target).val();
+        this.sendAction('action', new Date(value));
       });
     };
 
