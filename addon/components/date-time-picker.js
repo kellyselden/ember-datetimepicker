@@ -22,12 +22,17 @@ const DateTimePickerComponent = Ember.Component.extend({
     let changeHandler = event => {
       Ember.run(() => {
         let value = Ember.$(event.target).val();
+        if (!value) {
+          return;
+        }
+
         this.sendAction('action', new Date(value));
       });
     };
+    let options = this.get('options') || {};
 
     this.$()
-      .datetimepicker()
+      .datetimepicker(options)
       .on('change', changeHandler);
 
     this.set('changeHandler', changeHandler);

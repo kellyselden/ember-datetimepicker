@@ -2,6 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   initialDatetime: new Date(),
+  options: {
+    inline: true
+  },
 
   actions: {
     changeDatetime(datetime) {
