@@ -26,7 +26,13 @@ const DateTimePickerComponent = Ember.Component.extend({
           return;
         }
 
-        this.sendAction('action', new Date(value));
+        let newDatetime = new Date(value),
+            oldDatetime = this.get('datetime');
+        if (+newDatetime === +oldDatetime) {
+          return;
+        }
+
+        this.sendAction('action', newDatetime);
       });
     };
     let options = this.get('options') || {};
@@ -40,7 +46,7 @@ const DateTimePickerComponent = Ember.Component.extend({
 });
 
 DateTimePickerComponent.reopenClass({
-  positionalParameters: ['datetime']
+  positionalParams: ['datetime']
 });
 
 export default DateTimePickerComponent;
