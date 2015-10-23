@@ -1,6 +1,6 @@
 {
   "name": "ember-datetimepicker",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "ember addon wrapping xdan/datetimepicker",
   "directories": {
     "doc": "doc",
