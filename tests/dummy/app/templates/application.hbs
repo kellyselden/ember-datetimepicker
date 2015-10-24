@@ -1,10 +1,10 @@
 <h2 id="title">Welcome to Ember</h2>
 
 <div>
-  {{date-time-picker initalDatetime options=options action="changeInitialDatetime"}}
-  {{initialDatetime}}
+  {{date-time-picker datetime options=options action="changeDatetime"}}
+  {{datetime}}
 </div>
 <div>
-  {{date-time-picker datetime action="changeDatetime"}}
-  {{datetime}}
+  {{date-time-picker initialDatetime action="changeInitialDatetime"}}
+  {{initialDatetime}}
 </div>

@@ -7,11 +7,11 @@ export default Ember.Controller.extend({
   },
 
   actions: {
-    changeInitialDatetime(initialDatetime) {
-      this.set('initialDatetime', initialDatetime);
-    },
     changeDatetime(datetime) {
       this.set('datetime', datetime);
+    },
+    changeInitialDatetime(initialDatetime) {
+      this.set('initialDatetime', initialDatetime);
     }
   }
 });
