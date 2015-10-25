@@ -36,14 +36,17 @@ const DateTimePickerComponent = Ember.Component.extend({
   }),
 
   _updateValue() {
+    let value;
+
     let datetime = this.get('datetime');
-    if (!datetime) {
-      return;
+    if (datetime) {
+      let format = 'YYYY/MM/DD H:mm';
+      value = moment(datetime).format(format);
+    } else {
+      value = '';
     }
 
     let changeHandler = this.get('_changeHandlerProxy');
-    let format = 'YYYY/MM/DD H:mm';
-    let value = moment(datetime).format(format);
 
     this.$()
       .off('change', changeHandler)
