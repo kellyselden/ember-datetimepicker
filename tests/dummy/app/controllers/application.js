@@ -12,6 +12,10 @@ export default Ember.Controller.extend({
     },
     changeInitialDatetime(initialDatetime) {
       this.set('initialDatetime', initialDatetime);
+    },
+    clear() {
+      this.set('datetime', undefined);
+      this.set('initialDatetime', undefined);
     }
   }
 });
