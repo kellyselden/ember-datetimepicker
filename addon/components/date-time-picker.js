@@ -8,19 +8,27 @@ const {
   $: { proxy }
 } = Ember;
 
+function formatDate(date) {
+  return moment(date).format('YYYY/MM/DD H:mm');
+}
+
 const DateTimePickerComponent = Ember.Component.extend({
   tagName: 'input',
 
   _changeHandler(event) {
     run(() => {
-      let value = Ember.$(event.target).val();
-      if (!value) {
-        return;
+      let newValue = Ember.$(event.target).val(),
+          oldValue = this.get('datetime'),
+          newDatetime, newDatetimeFormat, oldDatetimeFormat;
+      if (newValue) {
+        newDatetime = new Date(newValue);
+        newDatetimeFormat = formatDate(newDatetime);
+      }
+      if (oldValue) {
+        oldDatetimeFormat = formatDate(oldValue);
       }
 
-      let newDatetime = new Date(value),
-          oldDatetime = this.get('datetime');
-      if (+newDatetime === +oldDatetime) {
+      if (newDatetimeFormat === oldDatetimeFormat) {
         return;
       }
 
@@ -36,22 +44,13 @@ const DateTimePickerComponent = Ember.Component.extend({
   }),
 
   _updateValue() {
-    let value;
-
-    let datetime = this.get('datetime');
+    let value, datetime = this.get('datetime');
     if (datetime) {
-      let format = 'YYYY/MM/DD H:mm';
-      value = moment(datetime).format(format);
+      value = formatDate(datetime);
     } else {
       value = '';
     }
-
-    let changeHandler = this.get('_changeHandlerProxy');
-
-    this.$()
-      .off('change', changeHandler)
-      .val(value)
-      .on('change', changeHandler);
+    this.$().val(value);
   },
 
   didInsertElement() {
