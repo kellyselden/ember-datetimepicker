@@ -57,11 +57,11 @@ const DateTimePickerComponent = Ember.Component.extend({
     let changeHandler = this.get('_changeHandlerProxy');
     let options = this.get('options') || {};
 
+    this._updateValue();
+
     this.$()
       .datetimepicker(options)
       .on('change', changeHandler);
-
-    this._updateValue();
   }
 });
 
