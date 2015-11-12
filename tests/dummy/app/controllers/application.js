@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   initialDatetime: new Date(),
+  datetime: new Date('12/25/1994'),
   options: {
     inline: true
   },
