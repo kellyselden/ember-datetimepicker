@@ -1,11 +1,11 @@
 <h2 id="title">Welcome to Ember</h2>
 
 <div>
-  {{date-time-picker datetime options=options action="changeDatetime"}}
-  {{datetime}}
+  {{date-time-picker initialDatetime options=options action="changeInitialDatetime"}}
+  {{initialDatetime}}
 </div>
 <div>
-  {{date-time-picker initialDatetime action="changeInitialDatetime"}}
-  {{initialDatetime}}
+  {{date-time-picker datetime action="changeDatetime"}}
+  {{datetime}}
 </div>
 <button {{action "clear"}}>clear both</button>
