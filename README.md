@@ -1,4 +1,7 @@
 # Ember-datetimepicker
+[![Build Status](https://travis-ci.org/kellyselden/ember-datetimepicker.svg?branch=master)](https://travis-ci.org/kellyselden/ember-datetimepicker)
+[![Dependency Status](https://gemnasium.com/kellyselden/ember-datetimepicker.svg)](https://gemnasium.com/kellyselden/ember-datetimepicker)
+[![devDependency Status](https://david-dm.org/kellyselden/ember-datetimepicker/dev-status.svg)](https://david-dm.org/kellyselden/ember-datetimepicker#info=devDependencies)
 
 This README outlines the details of collaborating on this Ember addon.
 
