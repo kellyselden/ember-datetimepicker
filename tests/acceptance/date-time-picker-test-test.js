@@ -81,3 +81,20 @@ test('clicking changes date', function(assert) {
     assert.notStrictEqual(newText, originalText);
   });
 });
+
+test('can clear date', function(assert) {
+  visit('/');
+
+  let originalText;
+
+  andThen(function() {
+    originalText = find('.display-inline .text').text();
+  });
+
+  click('#clear');
+
+  andThen(function() {
+    let newText = find('.display-inline .text').text();
+    assert.notStrictEqual(newText, originalText);
+  });
+});
