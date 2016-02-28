@@ -4,9 +4,7 @@ const {
   Component
 } = Ember;
 
-const MyComponent = Component.extend({
-  classNames: ['display-inline']
-});
+const MyComponent = Component.extend();
 
 MyComponent.reopenClass({
   positionalParams: ['datetime']
