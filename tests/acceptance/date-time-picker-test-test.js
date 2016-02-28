@@ -64,3 +64,20 @@ test('accepts initial date and time', function(assert) {
     assert.strictEqual(time.attr('data-minute'), '35');
   });
 });
+
+test('clicking changes date', function(assert) {
+  visit('/');
+
+  let originalText;
+
+  andThen(function() {
+    originalText = find('.display-inline .text').text();
+  });
+
+  click('.display-inline .xdsoft_date:not(.xdsoft_current)');
+
+  andThen(function() {
+    let newText = find('.display-inline .text').text();
+    assert.notStrictEqual(newText, originalText);
+  });
+});
