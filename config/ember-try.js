@@ -3,8 +3,18 @@ module.exports = {
   scenarios: [
     {
       name: 'default',
+      npm: {
+        devDependencies: {
+          'ember-hash-helper-polyfill': '0.1.0'
+        }
+      },
       bower: {
-        dependencies: { }
+        dependencies: {
+          'ember': '^1.0.0'
+        },
+        resolutions: {
+          'ember': '^1.0.0'
+        }
       }
     },
     {
