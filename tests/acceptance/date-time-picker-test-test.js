@@ -22,20 +22,18 @@ test('clicking toggles visibility', function(assert) {
 
   click('.display-regular .date-time-picker');
 
-  setTimeout(() => {
-    andThen(function() {
-      assert.strictEqual(find('.xdsoft_datetimepicker.display-regular:visible', 'body').length, 1);
-    });
+  waitFor('.xdsoft_datetimepicker.display-regular:visible', 'body');
 
-    click('#title');
+  andThen(function() {
+    assert.strictEqual(find('.xdsoft_datetimepicker.display-regular:visible', 'body').length, 1);
+  });
 
-    setTimeout(() => {
-      andThen(function() {
-        assert.strictEqual(find('.xdsoft_datetimepicker.display-regular:visible', 'body').length, 0);
-        done();
-      });
-    }, 100);
-  }, 500);
+  click('#title');
+
+  andThen(function() {
+    assert.strictEqual(find('.xdsoft_datetimepicker.display-regular:visible', 'body').length, 0);
+    done();
+  });
 });
 
 test('is cleaned up', function(assert) {
