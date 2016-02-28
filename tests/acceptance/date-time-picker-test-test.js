@@ -12,8 +12,6 @@ test('inline is visible on page load in context', function(assert) {
 });
 
 test('clicking toggles visibility', function(assert) {
-  let done = assert.async();
-
   visit('/');
 
   andThen(function() {
@@ -32,7 +30,6 @@ test('clicking toggles visibility', function(assert) {
 
   andThen(function() {
     assert.strictEqual(find('.xdsoft_datetimepicker.display-regular:visible', 'body').length, 0);
-    done();
   });
 });
 
