@@ -7,18 +7,9 @@ moduleForComponent('date-time-picker', 'Integration | Component | date time pick
 
 test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });"
+  // Handle any actions with this.on('myAction', function(val) { ... });
 
   this.render(hbs`{{date-time-picker}}`);
 
   assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:"
-  this.render(hbs`
-    {{#date-time-picker}}
-      template block text
-    {{/date-time-picker}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });
