@@ -1,11 +1,14 @@
 <h2 id="title">Welcome to Ember</h2>
 
-<div>
-  {{date-time-picker datetime options=options action="changeDatetime"}}
-  {{datetime}}
-</div>
-<div>
-  {{date-time-picker initialDatetime action="changeInitialDatetime"}}
-  {{initialDatetime}}
-</div>
-<button {{action "clear"}}>clear both</button>
+{{display-inline
+  initialDatetime
+  action=(action (mut initialDatetime))
+}}
+<button id="toggle" {{action "shouldShow"}}>toggle</button>
+{{#if shouldShow}}
+  {{display-regular
+    datetime
+    action=(action (mut datetime))
+  }}
+{{/if}}
+<button {{action "clear"}}>clear all</button>

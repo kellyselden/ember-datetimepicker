@@ -2,9 +2,13 @@ import Ember from 'ember';
 import moment from 'moment';
 
 const {
+  Component,
+  get,
+  on,
   observer,
   computed,
   run,
+  run: { scheduleOnce },
   $: { proxy }
 } = Ember;
 
@@ -12,13 +16,14 @@ function formatDate(date) {
   return moment(date).format('YYYY/MM/DD H:mm');
 }
 
-const DateTimePickerComponent = Ember.Component.extend({
+const MyComponent = Component.extend({
   tagName: 'input',
+  classNames: ['date-time-picker'],
 
   _changeHandler(event) {
     run(() => {
       let newValue = Ember.$(event.target).val(),
-          oldValue = this.get('datetime'),
+          oldValue = get(this, 'datetime'),
           newDatetime, newDatetimeFormat, oldDatetimeFormat;
       if (newValue) {
         newDatetime = new Date(newValue);
@@ -44,7 +49,7 @@ const DateTimePickerComponent = Ember.Component.extend({
   }),
 
   _updateValue() {
-    let value, datetime = this.get('datetime');
+    let value, datetime = get(this, 'datetime');
     if (datetime) {
       value = formatDate(datetime);
     } else {
@@ -53,20 +58,30 @@ const DateTimePickerComponent = Ember.Component.extend({
     this.$().val(value);
   },
 
-  didInsertElement() {
-    let changeHandler = this.get('_changeHandlerProxy');
-    let options = this.get('options') || {};
+  setUp: on('didInsertElement', function() {
+    let changeHandler = get(this, '_changeHandlerProxy');
+    let options = get(this, 'options') || {};
 
     this._updateValue();
 
+    scheduleOnce('afterRender', () => {
+      this.$()
+        .datetimepicker(options)
+        .on('change', changeHandler);
+    });
+  }),
+
+  tearDown: on('willDestroyElement', function() {
+    let changeHandler = get(this, '_changeHandlerProxy');
+
     this.$()
-      .datetimepicker(options)
-      .on('change', changeHandler);
-  }
+      .off('change', changeHandler)
+      .datetimepicker('destroy');
+  })
 });
 
-DateTimePickerComponent.reopenClass({
+MyComponent.reopenClass({
   positionalParams: ['datetime']
 });
 
-export default DateTimePickerComponent;
+export default MyComponent;
