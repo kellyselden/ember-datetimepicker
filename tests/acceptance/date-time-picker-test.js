@@ -1,7 +1,7 @@
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | date time picker test');
+moduleForAcceptance('Acceptance | date time picker');
 
 test('inline is visible on page load in context', function(assert) {
   visit('/');
