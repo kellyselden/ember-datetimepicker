@@ -45,17 +45,24 @@ const MyComponent = Component.extend({
   }),
 
   _datetimeChanged: observer('datetime', function() {
-    this._updateValue();
+    this._updateValue(true);
   }),
 
-  _updateValue() {
+  _updateValue(shouldForceUpdatePicker) {
     let value, datetime = get(this, 'datetime');
     if (datetime) {
       value = formatDate(datetime);
     } else {
       value = '';
     }
-    this.$().val(value);
+
+    let el = this.$();
+    el.val(value);
+
+    // is only needed for inline, changing value above didn't change the picker
+    if (shouldForceUpdatePicker) {
+      el.datetimepicker({ value });
+    }
   },
 
   setUp: on('didInsertElement', function() {

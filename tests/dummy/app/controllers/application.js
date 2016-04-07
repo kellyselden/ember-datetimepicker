@@ -5,8 +5,10 @@ const {
   setProperties
 } = Ember;
 
+const initialDatetime = new Date('12/25/1994 13:35');
+
 export default Controller.extend({
-  initialDatetime: new Date('12/25/1994 13:35'),
+  initialDatetime,
 
   shouldShow: true,
 
@@ -14,10 +16,10 @@ export default Controller.extend({
     shouldShow() {
       this.toggleProperty('shouldShow');
     },
-    clear() {
+    reset() {
       setProperties(this, {
         datetime: undefined,
-        initialDatetime: undefined
+        initialDatetime
       });
     }
   }

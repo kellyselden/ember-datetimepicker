@@ -3,6 +3,21 @@ import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | date time picker');
 
+function assertInitialDateTime(assert) {
+  let cal = find('.display-inline');
+  let date = cal.find('.xdsoft_date.xdsoft_current');
+  let time = cal.find('.xdsoft_time.xdsoft_current');
+  assert.strictEqual(date.attr('data-year'), '1994');
+  assert.strictEqual(date.attr('data-month'), '11');
+  assert.strictEqual(date.attr('data-date'), '25');
+  assert.strictEqual(time.attr('data-hour'), '13');
+  assert.strictEqual(time.attr('data-minute'), '35');
+}
+
+function changeInitialDateTime() {
+  click('.display-inline .xdsoft_date:not(.xdsoft_current)');
+}
+
 test('inline is visible on page load in context', function(assert) {
   visit('/');
 
@@ -51,14 +66,7 @@ test('accepts initial date and time', function(assert) {
   visit('/');
 
   andThen(function() {
-    let cal = find('.display-inline');
-    let date = cal.find('.xdsoft_date.xdsoft_current');
-    let time = cal.find('.xdsoft_time.xdsoft_current');
-    assert.strictEqual(date.attr('data-year'), '1994');
-    assert.strictEqual(date.attr('data-month'), '11');
-    assert.strictEqual(date.attr('data-date'), '25');
-    assert.strictEqual(time.attr('data-hour'), '13');
-    assert.strictEqual(time.attr('data-minute'), '35');
+    assertInitialDateTime(assert);
   });
 });
 
@@ -71,7 +79,7 @@ test('clicking changes date', function(assert) {
     originalText = find('.display-inline .text').text();
   });
 
-  click('.display-inline .xdsoft_date:not(.xdsoft_current)');
+  changeInitialDateTime();
 
   andThen(function() {
     let newText = find('.display-inline .text').text();
@@ -79,8 +87,10 @@ test('clicking changes date', function(assert) {
   });
 });
 
-test('can clear date', function(assert) {
+test('can reset date', function(assert) {
   visit('/');
+
+  changeInitialDateTime();
 
   let originalText;
 
@@ -88,10 +98,12 @@ test('can clear date', function(assert) {
     originalText = find('.display-inline .text').text();
   });
 
-  click('#clear');
+  click('#reset');
 
   andThen(function() {
     let newText = find('.display-inline .text').text();
     assert.notStrictEqual(newText, originalText);
+
+    assertInitialDateTime(assert);
   });
 });
