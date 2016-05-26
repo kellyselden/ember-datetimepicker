@@ -4,6 +4,8 @@
 [![Dependency Status](https://gemnasium.com/kellyselden/ember-datetimepicker.svg)](https://gemnasium.com/kellyselden/ember-datetimepicker)
 [![devDependency Status](https://david-dm.org/kellyselden/ember-datetimepicker/dev-status.svg)](https://david-dm.org/kellyselden/ember-datetimepicker#info=devDependencies)
 
+Demo: http://kellyselden.github.io/ember-datetimepicker
+
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
