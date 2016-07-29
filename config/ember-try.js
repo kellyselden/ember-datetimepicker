@@ -19,7 +19,7 @@ module.exports = {
       },
       npm: {
         devDependencies: {
-          'ember-hash-helper-polyfill': '0.1.0'
+          'ember-hash-helper-polyfill': '0.1.1'
         }
       }
     },
