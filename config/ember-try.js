@@ -2,12 +2,6 @@
 module.exports = {
   scenarios: [
     {
-      name: 'default',
-      bower: {
-        dependencies: { }
-      }
-    },
-    {
       name: 'ember-1.13',
       bower: {
         dependencies: {
@@ -20,6 +14,17 @@ module.exports = {
       npm: {
         devDependencies: {
           'ember-hash-helper-polyfill': '0.1.1'
+        }
+      }
+    },
+    {
+      name: 'ember-lts-2.4',
+      bower: {
+        dependencies: {
+          'ember': 'components/ember#lts-2-4'
+        },
+        resolutions: {
+          'ember': 'lts-2-4'
         }
       }
     },
