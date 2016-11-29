@@ -8,6 +8,6 @@ module.exports = {
     this._super.included(app);
 
     app.import(app.bowerDirectory + '/datetimepicker/jquery.datetimepicker.css');
-    app.import(app.bowerDirectory + '/datetimepicker/jquery.datetimepicker.js');
+    app.import(app.bowerDirectory + '/datetimepicker/build/jquery.datetimepicker.full.js');
   }
 };
