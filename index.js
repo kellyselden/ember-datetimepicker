@@ -20,7 +20,11 @@ module.exports = {
       destDir: 'jquery-datetimepicker'
     });
 
-    return mergeTrees([newTree, tree]);
+    if (tree) {
+      newTree = mergeTrees([tree, newTree]);
+    }
+
+    return newTree;
   },
 
   included: function(app) {
