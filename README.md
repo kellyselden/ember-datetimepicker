@@ -1,4 +1,5 @@
-# Ember-datetimepicker
+# ember-datetimepicker
+
 [![npm version](https://badge.fury.io/js/ember-datetimepicker.svg)](https://badge.fury.io/js/ember-datetimepicker)
 [![Build Status](https://travis-ci.org/kellyselden/ember-datetimepicker.svg?branch=master)](https://travis-ci.org/kellyselden/ember-datetimepicker)
 [![Dependency Status](https://gemnasium.com/kellyselden/ember-datetimepicker.svg)](https://gemnasium.com/kellyselden/ember-datetimepicker)
@@ -30,4 +31,4 @@ This README outlines the details of collaborating on this Ember addon.
 
 * `ember build`
 
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
