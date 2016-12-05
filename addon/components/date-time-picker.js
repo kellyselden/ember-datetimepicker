@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { scheduleOnce, bind } from '@ember/runloop';
-import { copy } from '@ember/object/internals';
 import moment from 'moment';
 
 function formatDate(date) {
@@ -60,9 +59,6 @@ export default Component.extend({
 
   didInsertElement() {
     let { options } = this;
-
-    // https://github.com/emberjs/ember.js/issues/14655
-    options = copy(options);
 
     this._updateValue();
 
