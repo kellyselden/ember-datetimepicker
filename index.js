@@ -2,7 +2,6 @@
 'use strict';
 
 var path = require('path');
-var resolve = require('resolve');
 var Funnel = require('broccoli-funnel');
 var mergeTrees = require('broccoli-merge-trees');
 
@@ -10,7 +9,7 @@ module.exports = {
   name: 'ember-datetimepicker',
 
   treeForVendor: function(tree) {
-    var pathInNodeModules = path.resolve(path.dirname(resolve.sync('jquery-datetimepicker')), '..');
+    var pathInNodeModules = path.resolve(path.dirname(require.resolve('jquery-datetimepicker')), '..');
 
     var newTree = new Funnel(pathInNodeModules, {
       files: [
