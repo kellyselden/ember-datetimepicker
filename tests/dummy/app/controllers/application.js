@@ -16,6 +16,9 @@ export default Controller.extend({
     shouldShow() {
       this.toggleProperty('shouldShow');
     },
+    updateCustomFormat(datetime) {
+      console.log(datetime);
+    },
     reset() {
       setProperties(this, {
         datetime: undefined,

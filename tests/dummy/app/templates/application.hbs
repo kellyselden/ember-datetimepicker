@@ -7,6 +7,7 @@
     className="display-inline"
     inline=true
     step=5
+    format="d/m/Y"
   )
   action=(action (mut initialDatetime))
 }}
@@ -17,8 +18,9 @@
     class="display-regular"
     options=(hash
       className="display-regular"
+      format="d/m/Y"
     )
-    action=(action (mut datetime))
+    action=(action "updateCustomFormat")
   }}
 {{/if}}
 <button id="reset" {{action "reset"}}>reset all</button>

@@ -13,18 +13,17 @@ const {
   copy
 } = Ember;
 
-function formatDate(date) {
-  return moment(date).format('YYYY/MM/DD H:mm');
+function formatDate(date, format = 'YYYY/MM/DD H:mm') {
+  return moment(date).format(format);
 }
 
 const MyComponent = Component.extend({
   tagName: 'input',
   classNames: ['date-time-picker'],
 
-  _changeHandler(event) {
+  _changeHandler(newValue) {
     run(() => {
-      let newValue = Ember.$(event.target).val(),
-          oldValue = get(this, 'datetime'),
+      let oldValue = get(this, 'datetime'),
           newDatetime, newDatetimeFormat, oldDatetimeFormat;
       if (newValue) {
         newDatetime = new Date(newValue);
@@ -52,7 +51,7 @@ const MyComponent = Component.extend({
   _updateValue(shouldForceUpdatePicker) {
     let value, datetime = get(this, 'datetime');
     if (datetime) {
-      value = formatDate(datetime);
+      value = formatDate(datetime, get(this, 'options.format'));
     } else {
       value = '';
     }
@@ -73,12 +72,13 @@ const MyComponent = Component.extend({
     // https://github.com/emberjs/ember.js/issues/14655
     options = copy(options);
 
+    options.onChangeDateTime = changeHandler;
+
     this._updateValue();
 
     scheduleOnce('afterRender', () => {
       this.$()
-        .datetimepicker(options)
-        .on('change', changeHandler);
+        .datetimepicker(options);
     });
   }),
 
