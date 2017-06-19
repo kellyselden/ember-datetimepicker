@@ -7,7 +7,7 @@
 [![devDependencies Status](https://david-dm.org/kellyselden/ember-datetimepicker/dev-status.svg)](https://david-dm.org/kellyselden/ember-datetimepicker?type=dev)
 ![Ember Version](https://embadge.io/v1/badge.svg?start=1.13.0)
 
-Demo: http://kellyselden.github.io/ember-datetimepicker
+Demo: https://kellyselden.github.io/ember-datetimepicker
 
 This README outlines the details of collaborating on this Ember addon.
 
