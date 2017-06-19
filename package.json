@@ -54,6 +54,6 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
-    "demoURL": "http://kellyselden.github.io/ember-datetimepicker"
+    "demoURL": "https://kellyselden.github.io/ember-datetimepicker"
   }
 }
