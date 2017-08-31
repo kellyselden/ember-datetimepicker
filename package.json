@@ -44,7 +44,7 @@
     "ember-disable-prototype-extensions": "^1.1.2",
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
-    "ember-source": "~2.14.1",
+    "ember-source": "~2.15.0",
     "ember-wait-for-test-helper": "^2.0.0",
     "jquery-datetimepicker": "^2.5.4",
     "loader.js": "^4.2.3"
