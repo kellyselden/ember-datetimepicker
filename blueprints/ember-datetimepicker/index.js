@@ -1,9 +1,17 @@
-module.exports = {
-  normalizeEntityName: function() {},
+/* eslint-env node */
+'use strict';
 
-  afterInstall: function(options) {
-    return this.addPackageToProject('jquery-datetimepicker', '2.5.4').then(function() {
-      return this.addAddonToProject({ name: 'ember-cli-moment-shim', target: '^3.0.0' });
-    }.bind(this));
+const fs = require('fs');
+const path = require('path');
+
+module.exports = {
+  normalizeEntityName() {},
+
+  afterInstall() {
+    let pkg = JSON.parse(fs.readFileSync(path.join(__dirname, '../../package.json'), 'utf8'));
+
+    return this.addPackageToProject('jquery-datetimepicker', pkg.devDependencies['jquery-datetimepicker']).then(() => {
+      return this.addAddonToProject({ name: 'ember-cli-moment-shim', target: pkg.devDependencies['ember-cli-moment-shim'] });
+    });
   }
 };
