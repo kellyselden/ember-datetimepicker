@@ -48,7 +48,7 @@
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.15.0",
     "ember-wait-for-test-helper": "^2.0.0",
-    "jquery-datetimepicker": "2.5.5",
+    "jquery-datetimepicker": "2.5.11",
     "jsonfile": "^4.0.0",
     "loader.js": "^4.2.3",
     "mocha": "^4.0.1"
