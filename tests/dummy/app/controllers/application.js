@@ -1,9 +1,5 @@
-import Ember from 'ember';
-
-const {
-  Controller,
-  setProperties
-} = Ember;
+import Controller from '@ember/controller';
+import { setProperties } from '@ember/object';
 
 const initialDatetime = new Date('12/25/1994 13:35');
 

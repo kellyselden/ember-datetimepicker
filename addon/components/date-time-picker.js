@@ -1,17 +1,14 @@
-import Ember from 'ember';
+import $ from 'jquery';
+import Component from '@ember/component';
+import { on } from '@ember/object/evented';
+import { computed, observer, get } from '@ember/object';
+import { scheduleOnce, run } from '@ember/runloop';
+import { copy } from '@ember/object/internals';
 import moment from 'moment';
 
 const {
-  Component,
-  get,
-  on,
-  observer,
-  computed,
-  run,
-  run: { scheduleOnce },
-  $: { proxy },
-  copy
-} = Ember;
+  proxy
+} = $;
 
 function formatDate(date) {
   return moment(date).format('YYYY/MM/DD H:mm');
@@ -23,7 +20,7 @@ const MyComponent = Component.extend({
 
   _changeHandler(event) {
     run(() => {
-      let newValue = Ember.$(event.target).val(),
+      let newValue = $(event.target).val(),
           oldValue = get(this, 'datetime'),
           newDatetime, newDatetimeFormat, oldDatetimeFormat;
       if (newValue) {

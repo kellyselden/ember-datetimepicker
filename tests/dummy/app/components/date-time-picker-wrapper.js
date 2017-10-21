@@ -1,8 +1,4 @@
-import Ember from 'ember';
-
-const {
-  Component
-} = Ember;
+import Component from '@ember/component';
 
 const MyComponent = Component.extend();
 
