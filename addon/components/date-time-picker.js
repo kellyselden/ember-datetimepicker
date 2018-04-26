@@ -1,13 +1,7 @@
-import $ from 'jquery';
 import Component from '@ember/component';
-import { computed, observer, get } from '@ember/object';
 import { scheduleOnce, run } from '@ember/runloop';
 import { copy } from '@ember/object/internals';
 import moment from 'moment';
-
-const {
-  proxy
-} = $;
 
 function formatDate(date) {
   return moment(date).format('YYYY/MM/DD H:mm');
@@ -17,10 +11,16 @@ export default Component.extend({
   tagName: 'input',
   classNames: ['date-time-picker'],
 
+  init() {
+    this._super();
+
+    this.set('_changeHandlerProxy', this._changeHandler.bind(this));
+  },
+
   _changeHandler(event) {
     run(() => {
-      let newValue = $(event.target).val(),
-          oldValue = get(this, 'datetime'),
+      let newValue = event.target.value,
+          oldValue = this.get('datetime'),
           newDatetime, newDatetimeFormat, oldDatetimeFormat;
       if (newValue) {
         newDatetime = new Date(newValue);
@@ -34,19 +34,12 @@ export default Component.extend({
         return;
       }
 
-      this.sendAction('action', newDatetime);
+      this.get('action')(newDatetime);
     });
   },
-  _changeHandlerProxy: computed(function() {
-    return proxy(this._changeHandler, this);
-  }),
-
-  _datetimeChanged: observer('datetime', function() {
-    this._updateValue(true);
-  }),
 
   _updateValue(shouldForceUpdatePicker) {
-    let value, datetime = get(this, 'datetime');
+    let value, datetime = this.get('datetime');
     if (datetime) {
       value = formatDate(datetime);
     } else {
@@ -63,10 +56,8 @@ export default Component.extend({
   },
 
   didInsertElement() {
-    this._super(...arguments);
-
-    let changeHandler = get(this, '_changeHandlerProxy');
-    let options = get(this, 'options') || {};
+    let changeHandler = this._changeHandlerProxy;
+    let options = this.get('options') || {};
 
     // https://github.com/emberjs/ember.js/issues/14655
     options = copy(options);
@@ -80,10 +71,12 @@ export default Component.extend({
     });
   },
 
-  willDestroyElement() {
-    this._super(...arguments);
+  didUpdateAttrs() {
+    this._updateValue(true);
+  },
 
-    let changeHandler = get(this, '_changeHandlerProxy');
+  willDestroyElement() {
+    let changeHandler = this._changeHandlerProxy;
 
     this.$()
       .off('change', changeHandler)

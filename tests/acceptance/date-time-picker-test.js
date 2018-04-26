@@ -3,7 +3,7 @@ import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import $ from 'jquery';
 
-module('Acceptance | date time picker', function(hooks) {
+module('Acceptance | date-time-picker', function(hooks) {
   setupApplicationTest(hooks);
 
   function assertInitialDateTime(assert) {
