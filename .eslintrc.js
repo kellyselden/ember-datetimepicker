@@ -15,7 +15,6 @@ module.exports = {
     browser: true
   },
   rules: {
-    'ember/closure-actions': 0
   },
   overrides: [
     // node files
@@ -26,6 +25,7 @@ module.exports = {
         'testem.js',
         'blueprints/*/index.js',
         'config/**/*.js',
+        'node-tests/**/*.js',
         'tests/dummy/config/**/*.js'
       ],
       excludedFiles: [
@@ -52,7 +52,6 @@ module.exports = {
     {
       files: ['node-tests/**/*-test.js'],
       env: {
-        node: true,
         mocha: true
       }
     }
