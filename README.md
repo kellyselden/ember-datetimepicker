@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/kellyselden/ember-datetimepicker.svg?branch=master)](https://travis-ci.org/kellyselden/ember-datetimepicker)
 [![Dependency Status](https://gemnasium.com/kellyselden/ember-datetimepicker.svg)](https://gemnasium.com/kellyselden/ember-datetimepicker)
 [![devDependencies Status](https://david-dm.org/kellyselden/ember-datetimepicker/dev-status.svg)](https://david-dm.org/kellyselden/ember-datetimepicker?type=dev)
-![Ember Version](https://embadge.io/v1/badge.svg?start=1.13.0)
+[![Ember Version](https://img.shields.io/badge/ember-1.13%2B-brightgreen.svg)](https://www.emberjs.com/)
 
 Demo: https://kellyselden.github.io/ember-datetimepicker
 
