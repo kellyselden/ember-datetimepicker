@@ -1,12 +1,12 @@
 'use strict';
 
 const jsonfile = require('jsonfile');
-const blueprintHelpers = require('ember-cli-blueprint-test-helpers/helpers');
-const setupTestHooks = blueprintHelpers.setupTestHooks;
-const emberNew = blueprintHelpers.emberNew;
-const emberGenerate = blueprintHelpers.emberGenerate;
-
-const expect = require('ember-cli-blueprint-test-helpers/chai').expect;
+const {
+  setupTestHooks,
+  emberNew,
+  emberGenerate
+} = require('ember-cli-blueprint-test-helpers/helpers');
+const { expect } = require('ember-cli-blueprint-test-helpers/chai');
 
 describe('Acceptance: ember generate and destroy ember-datetimepicker', function() {
   setupTestHooks(this, {
