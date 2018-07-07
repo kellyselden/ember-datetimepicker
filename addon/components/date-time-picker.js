@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import Component from '@ember/component';
-import { on } from '@ember/object/evented';
 import { computed, observer, get } from '@ember/object';
 import { scheduleOnce, run } from '@ember/runloop';
 import { copy } from '@ember/object/internals';
@@ -14,7 +13,7 @@ function formatDate(date) {
   return moment(date).format('YYYY/MM/DD H:mm');
 }
 
-const MyComponent = Component.extend({
+export default Component.extend({
   tagName: 'input',
   classNames: ['date-time-picker'],
 
@@ -63,7 +62,9 @@ const MyComponent = Component.extend({
     }
   },
 
-  setUp: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super(...arguments);
+
     let changeHandler = get(this, '_changeHandlerProxy');
     let options = get(this, 'options') || {};
 
@@ -77,19 +78,17 @@ const MyComponent = Component.extend({
         .datetimepicker(options)
         .on('change', changeHandler);
     });
-  }),
+  },
 
-  tearDown: on('willDestroyElement', function() {
+  willDestroyElement() {
+    this._super(...arguments);
+
     let changeHandler = get(this, '_changeHandlerProxy');
 
     this.$()
       .off('change', changeHandler)
       .datetimepicker('destroy');
-  })
-});
-
-MyComponent.reopenClass({
+  }
+}).reopenClass({
   positionalParams: ['datetime']
 });
-
-export default MyComponent;
