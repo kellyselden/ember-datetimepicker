@@ -1,6 +1,5 @@
 'use strict';
 
-const jsonfile = require('jsonfile');
 const {
   setupTestHooks,
   emberNew,
@@ -18,7 +17,7 @@ describe('Acceptance: ember generate and destroy ember-datetimepicker', function
     return emberNew()
       .then(() => emberGenerate(['ember-datetimepicker']))
       .then(() => {
-        let pkg = jsonfile.readFileSync('package.json');
+        let pkg = require('../../package.json');
 
         [
           'ember-cli-moment-shim',
