@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import { scheduleOnce, run } from '@ember/runloop';
+import { scheduleOnce, bind } from '@ember/runloop';
 import { copy } from '@ember/object/internals';
 import moment from 'moment';
 
@@ -14,32 +14,35 @@ export default Component.extend({
   init() {
     this._super();
 
-    this.set('_changeHandlerProxy', this._changeHandler.bind(this));
+    if (!this.options) {
+      this.set('options', {});
+    }
+
+    this.set('_changeHandlerProxy', bind(this, this._changeHandler));
   },
 
   _changeHandler(event) {
-    run(() => {
-      let newValue = event.target.value,
-          oldValue = this.get('datetime'),
-          newDatetime, newDatetimeFormat, oldDatetimeFormat;
-      if (newValue) {
-        newDatetime = new Date(newValue);
-        newDatetimeFormat = formatDate(newDatetime);
-      }
-      if (oldValue) {
-        oldDatetimeFormat = formatDate(oldValue);
-      }
+    let newValue = event.target.value;
+    let oldValue = this.datetime;
+    let newDatetime, newDatetimeFormat, oldDatetimeFormat;
+    if (newValue) {
+      newDatetime = new Date(newValue);
+      newDatetimeFormat = formatDate(newDatetime);
+    }
+    if (oldValue) {
+      oldDatetimeFormat = formatDate(oldValue);
+    }
 
-      if (newDatetimeFormat === oldDatetimeFormat) {
-        return;
-      }
+    if (newDatetimeFormat === oldDatetimeFormat) {
+      return;
+    }
 
-      this.get('action')(newDatetime);
-    });
+    this.action(newDatetime);
   },
 
   _updateValue(shouldForceUpdatePicker) {
-    let value, datetime = this.get('datetime');
+    let value;
+    let { datetime } = this;
     if (datetime) {
       value = formatDate(datetime);
     } else {
@@ -56,8 +59,7 @@ export default Component.extend({
   },
 
   didInsertElement() {
-    let changeHandler = this._changeHandlerProxy;
-    let options = this.get('options') || {};
+    let { options } = this;
 
     // https://github.com/emberjs/ember.js/issues/14655
     options = copy(options);
@@ -67,7 +69,7 @@ export default Component.extend({
     scheduleOnce('afterRender', () => {
       this.$()
         .datetimepicker(options)
-        .on('change', changeHandler);
+        .on('change', this._changeHandlerProxy);
     });
   },
 
@@ -76,10 +78,8 @@ export default Component.extend({
   },
 
   willDestroyElement() {
-    let changeHandler = this._changeHandlerProxy;
-
     this.$()
-      .off('change', changeHandler)
+      .off('change', this._changeHandlerProxy)
       .datetimepicker('destroy');
   }
 }).reopenClass({
