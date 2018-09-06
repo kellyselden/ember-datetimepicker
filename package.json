@@ -57,7 +57,7 @@
     "jquery-datetimepicker": "2.5.20",
     "loader.js": "^4.2.3",
     "mocha": "^5.2.0",
-    "qunit-dom": "^0.7.1"
+    "qunit-dom": "^0.8.0"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
