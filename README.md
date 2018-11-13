@@ -6,7 +6,7 @@ ember-datetimepicker
 [![Build Status](https://travis-ci.org/kellyselden/ember-datetimepicker.svg?branch=master)](https://travis-ci.org/kellyselden/ember-datetimepicker)
 [![dependencies Status](https://david-dm.org/kellyselden/ember-datetimepicker/status.svg)](https://david-dm.org/kellyselden/ember-datetimepicker)
 [![devDependencies Status](https://david-dm.org/kellyselden/ember-datetimepicker/dev-status.svg)](https://david-dm.org/kellyselden/ember-datetimepicker?type=dev)
-[![Ember Version](https://img.shields.io/badge/ember-2.12%2B-brightgreen.svg)](https://www.emberjs.com/)
+[![Ember Version](https://img.shields.io/badge/ember-2.16%2B-brightgreen.svg)](https://www.emberjs.com/)
 
 ember addon wrapping xdan/datetimepicker
 
@@ -35,6 +35,7 @@ Contributing
 
 ### Linting
 
+* `npm run lint:hbs`
 * `npm run lint:js`
 * `npm run lint:js -- --fix`
 

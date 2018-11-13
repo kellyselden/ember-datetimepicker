@@ -5,7 +5,7 @@ const Funnel = require('broccoli-funnel');
 const mergeTrees = require('broccoli-merge-trees');
 
 module.exports = {
-  name: 'ember-datetimepicker',
+  name: require('./package').name,
 
   treeForVendor(tree) {
     let pathInNodeModules = path.resolve(path.dirname(require.resolve('jquery-datetimepicker')), '..');
