@@ -33,7 +33,7 @@
     "pkg-conf": "^2.0.0"
   },
   "devDependencies": {
-    "@ember/jquery": "^0.5.1",
+    "@ember/jquery": "^0.6.0",
     "@ember/optional-features": "^0.6.3",
     "broccoli-asset-rev": "^3.0.0",
     "ember-cli": "~3.5.1",
