@@ -60,7 +60,7 @@
     "eslint-plugin-node": "^8.0.0",
     "jquery-datetimepicker": "2.5.20",
     "loader.js": "^4.7.0",
-    "mocha": "^5.2.0",
+    "mocha": "^6.0.0",
     "qunit-dom": "^0.8.0"
   },
   "engines": {
