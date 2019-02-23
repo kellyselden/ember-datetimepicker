@@ -58,7 +58,7 @@
     "ember-try": "^0.2.23",
     "eslint-plugin-ember": "^6.0.1",
     "eslint-plugin-node": "^8.0.0",
-    "jquery-datetimepicker": "2.5.20",
+    "jquery-datetimepicker": "2.5.21",
     "loader.js": "^4.7.0",
     "mocha": "^6.0.0",
     "qunit-dom": "^0.8.0"
