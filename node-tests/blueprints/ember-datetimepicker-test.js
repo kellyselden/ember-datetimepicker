@@ -10,7 +10,7 @@ const { expect } = require('ember-cli-blueprint-test-helpers/chai');
 describe('Acceptance: ember generate and destroy ember-datetimepicker', function() {
   setupTestHooks(this, {
     disabledTasks: [],
-    timeout: 60000
+    timeout: 2 * 60 * 1000
   });
 
   it('syncs dependencies between dev and blueprint', function() {
