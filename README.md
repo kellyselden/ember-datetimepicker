@@ -32,6 +32,12 @@ Usage
 Demo: https://kellyselden.github.io/ember-datetimepicker
 
 
+Contributing
+------------------------------------------------------------------------------
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
+
+
 License
 ------------------------------------------------------------------------------
 
