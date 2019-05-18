@@ -61,7 +61,8 @@
     "jquery-datetimepicker": "2.5.21",
     "loader.js": "^4.7.0",
     "mocha": "^6.0.0",
-    "qunit-dom": "^0.8.0"
+    "qunit-dom": "^0.8.0",
+    "renovate-config-standard": "^2.0.0"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
