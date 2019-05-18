@@ -21,6 +21,7 @@
 /CONTRIBUTING.md
 /ember-cli-build.js
 /node-tests/
+/renovate.json
 /testem.js
 /tests/
 /yarn.lock
