@@ -25,7 +25,6 @@ branches:
     - master
     # npm version tags
     - /^v\d+\.\d+\.\d+/
-    - /^greenkeeper\/.*$/
 
 jobs:
   fail_fast: true

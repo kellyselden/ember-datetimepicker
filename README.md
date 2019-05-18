@@ -1,7 +1,6 @@
 ember-datetimepicker
 ==============================================================================
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/kellyselden/ember-datetimepicker.svg)](https://greenkeeper.io/)
 [![npm version](https://badge.fury.io/js/ember-datetimepicker.svg)](https://badge.fury.io/js/ember-datetimepicker)
 [![Build Status](https://travis-ci.org/kellyselden/ember-datetimepicker.svg?branch=master)](https://travis-ci.org/kellyselden/ember-datetimepicker)
 [![dependencies Status](https://david-dm.org/kellyselden/ember-datetimepicker/status.svg)](https://david-dm.org/kellyselden/ember-datetimepicker)
