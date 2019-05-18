@@ -63,6 +63,10 @@
     "mocha": "^6.0.0",
     "qunit-dom": "^0.8.0"
   },
+  "peerDependencies": {
+    "ember-cli-moment-shim": "",
+    "jquery-datetimepicker": ""
+  },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
   },
