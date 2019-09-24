@@ -1,9 +1,10 @@
 import Component from '@ember/component';
+import $ from 'jquery'
 import { scheduleOnce, bind } from '@ember/runloop';
 import moment from 'moment';
 
-function formatDate(date) {
-  return moment(date).format('YYYY/MM/DD H:mm');
+function formatDate(date, format) {
+  return moment(date, format).format(format);
 }
 
 export default Component.extend({
@@ -13,8 +14,12 @@ export default Component.extend({
   init() {
     this._super();
 
+    // We want to default the format to jquery-datetimepicker's default format
     if (!this.options) {
-      this.set('options', {});
+      this.set('options', { format: 'YYYY/MM/DD H:mm'});
+    }
+    if (!this.options.format) {
+      this.options.format = 'YYYY/MM/DD H:mm';
     }
 
     this.set('_changeHandlerProxy', bind(this, this._changeHandler));
@@ -22,14 +27,16 @@ export default Component.extend({
 
   _changeHandler(event) {
     let newValue = event.target.value;
-    let oldValue = this.datetime;
+    let oldValue = this.datetime,
+        format = this.options.format;
+
     let newDatetime, newDatetimeFormat, oldDatetimeFormat;
     if (newValue) {
-      newDatetime = new Date(newValue);
-      newDatetimeFormat = formatDate(newDatetime);
+      newDatetime = moment(newValue, format);
+      newDatetimeFormat = formatDate(newValue, format);
     }
     if (oldValue) {
-      oldDatetimeFormat = formatDate(oldValue);
+      oldDatetimeFormat = formatDate(oldValue, format);
     }
 
     if (newDatetimeFormat === oldDatetimeFormat) {
@@ -40,10 +47,12 @@ export default Component.extend({
   },
 
   _updateValue(shouldForceUpdatePicker) {
-    let value;
+    let value,
+        format = this.options.format;
+
     let { datetime } = this;
     if (datetime) {
-      value = formatDate(datetime);
+      value = formatDate(datetime, format);
     } else {
       value = '';
     }
@@ -63,6 +72,7 @@ export default Component.extend({
     this._updateValue();
 
     scheduleOnce('afterRender', () => {
+      $.datetimepicker.setDateFormatter('moment');
       this.$()
         .datetimepicker(options)
         .on('change', this._changeHandlerProxy);
