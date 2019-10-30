@@ -57,7 +57,7 @@
     "ember-source-channel-url": "^2.0.0",
     "ember-try": "^1.0.0",
     "eslint-plugin-ember": "^6.2.0",
-    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-node": "^10.0.0",
     "jquery-datetimepicker": "2.5.21",
     "loader.js": "^4.7.0",
     "mocha": "^6.0.0",
