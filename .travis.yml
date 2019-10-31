@@ -9,7 +9,7 @@ sudo: false
 dist: trusty
 
 addons:
-  chrome: stable
+  firefox: latest
 
 cache:
   directories:
