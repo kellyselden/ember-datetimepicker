@@ -57,16 +57,18 @@ export default Component.extend({
     }
   },
 
-  didInsertElement() {
+  _initDatetimepicker() {
     let { options } = this;
 
+    this.$()
+      .datetimepicker(options)
+      .on('change', this._changeHandlerProxy);
+  },
+
+  didInsertElement() {
     this._updateValue();
 
-    scheduleOnce('afterRender', () => {
-      this.$()
-        .datetimepicker(options)
-        .on('change', this._changeHandlerProxy);
-    });
+    scheduleOnce('afterRender', this, this._initDatetimepicker);
   },
 
   didUpdateAttrs() {
