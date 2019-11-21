@@ -1,0 +1,24 @@
+<h2 id="title">Welcome to Ember</h2>
+
+{{date-time-picker-wrapper
+  initialDatetime
+  class="display-inline"
+  options=(hash
+    className="display-inline"
+    inline=true
+    step=5
+  )
+  action=(action (mut initialDatetime))
+}}
+<button id="toggle" {{action "shouldShow"}}>toggle</button>
+{{#if shouldShow}}
+  {{date-time-picker-wrapper
+    datetime
+    class="display-regular"
+    options=(hash
+      className="display-regular"
+    )
+    action=(action (mut datetime))
+  }}
+{{/if}}
+<button id="reset" {{action "reset"}}>reset all</button>
