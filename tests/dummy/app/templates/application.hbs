@@ -10,7 +10,7 @@
   )
   action=(action (mut initialDatetime))
 }}
-<button id="toggle" {{action "shouldShow"}}>toggle</button>
+<button type="button" id="toggle" {{action "shouldShow"}}>toggle</button>
 {{#if shouldShow}}
   {{date-time-picker-wrapper
     datetime
@@ -21,4 +21,4 @@
     action=(action (mut datetime))
   }}
 {{/if}}
-<button id="reset" {{action "reset"}}>reset all</button>
+<button type="button" id="reset" {{action "reset"}}>reset all</button>
