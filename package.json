@@ -78,11 +78,11 @@
   "engines": {
     "node": "10.* || >= 12"
   },
+  "ember": {
+    "edition": "classic"
+  },
   "ember-addon": {
     "configPath": "tests/dummy/config",
     "demoURL": "https://kellyselden.github.io/ember-datetimepicker"
-  },
-  "ember": {
-    "edition": "classic"
   }
 }
