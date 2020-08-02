@@ -29,7 +29,7 @@
     "nodetest": "mocha node-tests --recursive"
   },
   "dependencies": {
-    "broccoli-funnel": "^2.0.0",
+    "broccoli-funnel": "^3.0.0",
     "broccoli-merge-trees": "^4.0.0",
     "ember-cli-babel": "^7.19.0",
     "pkg-conf": "^3.0.0"
