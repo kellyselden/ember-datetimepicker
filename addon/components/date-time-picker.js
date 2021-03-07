@@ -1,3 +1,4 @@
+// eslint-disable-next-line ember/no-classic-components
 import Component from '@ember/component';
 import { scheduleOnce, bind } from '@ember/runloop';
 import moment from 'moment';
@@ -6,7 +7,9 @@ function formatDate(date) {
   return moment(date).format('YYYY/MM/DD H:mm');
 }
 
+// eslint-disable-next-line ember/no-classic-classes
 export default Component.extend({
+  // eslint-disable-next-line ember/require-tagless-components
   tagName: 'input',
   classNames: ['date-time-picker'],
 
@@ -65,17 +68,26 @@ export default Component.extend({
       .on('change', this._changeHandlerProxy);
   },
 
+  // eslint-disable-next-line ember/no-component-lifecycle-hooks
   didInsertElement() {
+    this._super(...arguments);
+
     this._updateValue();
 
     scheduleOnce('afterRender', this, this._initDatetimepicker);
   },
 
+  // eslint-disable-next-line ember/no-component-lifecycle-hooks
   didUpdateAttrs() {
+    this._super(...arguments);
+
     this._updateValue(true);
   },
 
+  // eslint-disable-next-line ember/no-component-lifecycle-hooks
   willDestroyElement() {
+    this._super(...arguments);
+
     this.$()
       .off('change', this._changeHandlerProxy)
       .datetimepicker('destroy');

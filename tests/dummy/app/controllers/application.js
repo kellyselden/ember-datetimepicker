@@ -1,28 +1,22 @@
 import Controller from '@ember/controller';
-import { setProperties } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
 const initialDatetime = new Date('12/25/1994 13:35');
 
-export default Controller.extend({
-  shouldShow: true,
+export default class ApplicationController extends Controller {
+  @tracked shouldShow = true;
+  @tracked initialDatetime = initialDatetime;
+  @tracked datetime;
 
-  init() {
-    this._super();
-
-    setProperties(this, {
-      initialDatetime
-    });
-  },
-
-  actions: {
-    shouldShow() {
-      this.toggleProperty('shouldShow');
-    },
-    reset() {
-      setProperties(this, {
-        datetime: undefined,
-        initialDatetime
-      });
-    }
+  @action toggleShow() {
+    this.shouldShow = !this.shouldShow;
   }
-});
+
+  @action reset() {
+    Object.assign(this, {
+      initialDatetime,
+      datetime: undefined
+    });
+  }
+}
