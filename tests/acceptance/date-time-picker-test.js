@@ -3,7 +3,7 @@ import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import $ from 'jquery';
 
-module('Acceptance | date-time-picker', function(hooks) {
+module('Acceptance | date-time-picker', function (hooks) {
   setupApplicationTest(hooks);
 
   function assertInitialDateTime(assert) {
@@ -21,29 +21,43 @@ module('Acceptance | date-time-picker', function(hooks) {
     await click('.display-inline .xdsoft_date:not(.xdsoft_current)');
   }
 
-  test('inline is visible on page load in context', async function(assert) {
+  test('inline is visible on page load in context', async function (assert) {
     await visit('/');
 
-    assert.strictEqual($('.xdsoft_datetimepicker.display-inline:visible').length, 1);
+    assert.strictEqual(
+      $('.xdsoft_datetimepicker.display-inline:visible').length,
+      1
+    );
   });
 
-  test('clicking toggles visibility', async function(assert) {
+  test('clicking toggles visibility', async function (assert) {
     await visit('/');
 
-    assert.strictEqual($('.xdsoft_datetimepicker.display-regular:visible').length, 0);
+    assert.strictEqual(
+      $('.xdsoft_datetimepicker.display-regular:visible').length,
+      0
+    );
 
     await click('.display-regular .date-time-picker');
 
-    await waitUntil(() => $('.xdsoft_datetimepicker.display-regular:visible').length);
+    await waitUntil(
+      () => $('.xdsoft_datetimepicker.display-regular:visible').length
+    );
 
-    assert.strictEqual($('.xdsoft_datetimepicker.display-regular:visible').length, 1);
+    assert.strictEqual(
+      $('.xdsoft_datetimepicker.display-regular:visible').length,
+      1
+    );
 
     await click('#title');
 
-    assert.strictEqual($('.xdsoft_datetimepicker.display-regular:visible').length, 0);
+    assert.strictEqual(
+      $('.xdsoft_datetimepicker.display-regular:visible').length,
+      0
+    );
   });
 
-  test('is cleaned up', async function(assert) {
+  test('is cleaned up', async function (assert) {
     await visit('/');
 
     assert.strictEqual($('.xdsoft_datetimepicker.display-regular').length, 1);
@@ -53,13 +67,13 @@ module('Acceptance | date-time-picker', function(hooks) {
     assert.strictEqual($('.xdsoft_datetimepicker.display-regular').length, 0);
   });
 
-  test('accepts initial date and time', async function(assert) {
+  test('accepts initial date and time', async function (assert) {
     await visit('/');
 
     assertInitialDateTime(assert);
   });
 
-  test('clicking changes date', async function(assert) {
+  test('clicking changes date', async function (assert) {
     await visit('/');
 
     let originalText = find('.display-inline .text').textContent;
@@ -71,7 +85,7 @@ module('Acceptance | date-time-picker', function(hooks) {
     assert.notStrictEqual(newText, originalText);
   });
 
-  test('can reset date', async function(assert) {
+  test('can reset date', async function (assert) {
     await visit('/');
 
     await changeInitialDateTime();
@@ -89,8 +103,10 @@ module('Acceptance | date-time-picker', function(hooks) {
     assert.notStrictEqual(newText, originalText);
 
     await waitUntil(() => {
-      return cal.querySelector('.xdsoft_date.xdsoft_current') !== date
-        && cal.querySelector('.xdsoft_time.xdsoft_current') !== time;
+      return (
+        cal.querySelector('.xdsoft_date.xdsoft_current') !== date &&
+        cal.querySelector('.xdsoft_time.xdsoft_current') !== time
+      );
     });
 
     assertInitialDateTime(assert);

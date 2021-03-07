@@ -8,14 +8,17 @@ module.exports = {
   name: require('./package').name,
 
   treeForVendor(tree) {
-    let pathInNodeModules = path.resolve(path.dirname(require.resolve('jquery-datetimepicker')), '..');
+    let pathInNodeModules = path.resolve(
+      path.dirname(require.resolve('jquery-datetimepicker')),
+      '..'
+    );
 
     let newTree = new Funnel(pathInNodeModules, {
       files: [
         'jquery.datetimepicker.css',
-        'build/jquery.datetimepicker.full.js'
+        'build/jquery.datetimepicker.full.js',
       ],
-      destDir: 'jquery-datetimepicker'
+      destDir: 'jquery-datetimepicker',
     });
 
     if (tree) {
@@ -29,6 +32,8 @@ module.exports = {
     this._super.included.apply(this, arguments);
 
     app.import('vendor/jquery-datetimepicker/jquery.datetimepicker.css');
-    app.import('vendor/jquery-datetimepicker/build/jquery.datetimepicker.full.js');
-  }
+    app.import(
+      'vendor/jquery-datetimepicker/build/jquery.datetimepicker.full.js'
+    );
+  },
 };
