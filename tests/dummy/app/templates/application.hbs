@@ -1,24 +1,31 @@
 <h2 id="title">Welcome to Ember</h2>
 
-{{date-time-picker-wrapper
-  initialDatetime
+<DateTimePickerWrapper
+  @datetime={{this.initialDatetime}}
   class="display-inline"
-  options=(hash
+  @options={{hash
     className="display-inline"
     inline=true
     step=5
-  )
-  action=(action (mut initialDatetime))
-}}
-<button type="button" id="toggle" {{action "shouldShow"}}>toggle</button>
-{{#if shouldShow}}
-  {{date-time-picker-wrapper
-    datetime
-    class="display-regular"
-    options=(hash
-      className="display-regular"
-    )
-    action=(action (mut datetime))
   }}
+  @action={{action (mut this.initialDatetime)}}
+/>
+
+<button type="button" id="toggle" {{on "click" this.toggleShow}}>
+  toggle
+</button>
+
+{{#if this.shouldShow}}
+  <DateTimePickerWrapper
+    @datetime={{this.datetime}}
+    class="display-regular"
+    @options={{hash
+      className="display-regular"
+    }}
+    @action={{action (mut this.datetime)}}
+  />
 {{/if}}
-<button type="button" id="reset" {{action "reset"}}>reset all</button>
+
+<button type="button" id="reset" {{on "click" this.reset}}>
+  reset all
+</button>
