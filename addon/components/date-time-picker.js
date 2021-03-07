@@ -63,9 +63,7 @@ export default Component.extend({
   _initDatetimepicker() {
     let { options } = this;
 
-    this.$()
-      .datetimepicker(options)
-      .on('change', this._changeHandlerProxy);
+    this.$().datetimepicker(options).on('change', this._changeHandlerProxy);
   },
 
   // eslint-disable-next-line ember/no-component-lifecycle-hooks
@@ -88,10 +86,8 @@ export default Component.extend({
   willDestroyElement() {
     this._super(...arguments);
 
-    this.$()
-      .off('change', this._changeHandlerProxy)
-      .datetimepicker('destroy');
-  }
+    this.$().off('change', this._changeHandlerProxy).datetimepicker('destroy');
+  },
 }).reopenClass({
-  positionalParams: ['datetime']
+  positionalParams: ['datetime'],
 });

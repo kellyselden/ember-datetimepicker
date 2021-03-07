@@ -16,7 +16,7 @@ export default class ApplicationController extends Controller {
   @action reset() {
     Object.assign(this, {
       initialDatetime,
-      datetime: undefined
+      datetime: undefined,
     });
   }
 }
