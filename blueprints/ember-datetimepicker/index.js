@@ -3,17 +3,17 @@
 module.exports = {
   normalizeEntityName() {},
 
-  afterInstall() {
-    return require('pkg-conf')('devDependencies').then((devDependencies) => {
-      return this.addPackageToProject(
-        'jquery-datetimepicker',
-        devDependencies['jquery-datetimepicker']
-      ).then(() => {
-        return this.addAddonToProject({
-          name: 'ember-cli-moment-shim',
-          target: devDependencies['ember-cli-moment-shim'],
-        });
-      });
+  async afterInstall() {
+    let devDependencies = await require('pkg-conf')('devDependencies');
+
+    await this.addPackageToProject(
+      'jquery-datetimepicker',
+      devDependencies['jquery-datetimepicker']
+    );
+
+    await this.addAddonToProject({
+      name: 'ember-cli-moment-shim',
+      target: devDependencies['ember-cli-moment-shim'],
     });
   },
 };
