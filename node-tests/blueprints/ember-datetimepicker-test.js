@@ -10,18 +10,18 @@ const { expect } = require('ember-cli-blueprint-test-helpers/chai');
 describe('Acceptance: ember generate and destroy ember-datetimepicker', function () {
   setupTestHooks(this, {
     disabledTasks: [],
-    timeout: 2 * 60 * 1000,
+    timeout: 2 * 60e3,
   });
 
-  it('syncs dependencies between dev and blueprint', function () {
-    return emberNew()
-      .then(() => emberGenerate(['ember-datetimepicker']))
-      .then(() => {
-        let pkg = require('../../package.json');
+  it('syncs dependencies between dev and blueprint', async function () {
+    await emberNew();
 
-        ['ember-cli-moment-shim', 'jquery-datetimepicker'].forEach((dep) => {
-          expect(pkg.devDependencies[dep]).to.be.ok;
-        });
-      });
+    await emberGenerate(['ember-datetimepicker']);
+
+    let pkg = require('../../package');
+
+    for (let dep of ['ember-cli-moment-shim', 'jquery-datetimepicker']) {
+      expect(pkg.devDependencies[dep]).to.be.ok;
+    }
   });
 });
