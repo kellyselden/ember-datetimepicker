@@ -8,7 +8,7 @@ node_js:
 dist: xenial
 
 addons:
-  firefox: latest
+  chrome: stable
 
 cache:
   directories:
