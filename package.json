@@ -73,7 +73,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "jquery-datetimepicker": "2.5.21",
     "loader.js": "^4.7.0",
-    "mocha": "^8.3.2",
+    "mocha": "^9.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "qunit": "^2.14.0",
