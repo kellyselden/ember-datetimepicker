@@ -69,7 +69,7 @@
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-ember": "^10.2.0",
-    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-n": "^14.0.0",
     "eslint-plugin-prettier": "^3.4.0",
     "jquery-datetimepicker": "2.5.21",
     "loader.js": "^4.7.0",
